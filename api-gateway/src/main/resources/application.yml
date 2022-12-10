@@ -32,7 +32,6 @@ spring:
           predicates:
             - Path=/user/**
 
-
         - id: giftcard
           uri: http://giftcard:8083
           predicates:
@@ -42,7 +41,6 @@ spring:
           uri: http://payment:8082
           predicates:
             - Path=/payment/**
-
 
 #  lb://giftcard
 jwt:
