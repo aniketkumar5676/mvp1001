@@ -1,0 +1,224 @@
+version: "3"
+
+
+services:
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-server
+    restart: always
+    hostname: localhost
+    networks:
+      - giftnetwork
+
+    ports:
+      - 8076:8076
+
+  rabbitmq:
+    image: rabbitmq:3.9.8-management-alpine
+    container_name: rabbitmq
+    hostname: localhost
+    restart: always
+    networks:
+      - giftnetwork
+
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST:
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+
+  mysqlservice:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    hostname: localhost
+    networks:
+      - giftnetwork
+    ports:
+      - 3307:3306
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Kotak@1234'
+      MYSQL_PASSWORD: Kotak@1234
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  gateway:
+    build: api-gateway/
+    container_name: api-gateway
+
+    depends_on:
+      - eureka-server
+      - mysqlservice
+    networks:
+      - giftnetwork
+
+    restart: always
+    hostname: localhost
+    ports:
+      - 8080:8080
+
+
+
+  product-webapp:
+    build: product-webapp/
+    image: product-webapp
+    depends_on:
+      - eureka-server
+    networks:
+      - giftnetwork
+    restart: always
+    container_name: product-webapp
+    hostname: localhost
+    ports:
+      - 3001:3001
+
+  giftcard:
+    build: giftcard-service/
+    container_name: giftcard
+    depends_on:
+      - eureka-server
+      - mysqlservice
+      - rabbitmq
+    restart: always
+    hostname: localhost
+    networks:
+      - giftnetwork
+    ports:
+      - 8083:8083
+
+
+  user:
+    build: user-profile-service/
+    container_name: user
+    depends_on:
+      - eureka-server
+      - gateway
+      - mysqlservice
+    restart: always
+    networks:
+      - giftnetwork
+    hostname: localhost
+    ports:
+      - 8081:8081
+
+
+  payment:
+    build: payment-service/
+    container_name: payment
+    depends_on:
+      - eureka-server
+      - gateway
+      - mysqlservice
+      - rabbitmq
+    restart: always
+    networks:
+      - giftnetwork
+    hostname: localhost
+    ports:
+      - 8082:8082
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    networks:
+      - giftnetwork
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - eureka-server
+      - gateway
+      - user
+      - giftcard
+      - payment
+
+  grafana:
+      image: grafana/grafana:latest
+      container_name: grafana
+      restart: unless-stopped
+      networks:
+        - giftnetwork
+      ports:
+        - "3000:3000"
+      links:
+        - prometheus:prometheus
+
+networks:
+  giftnetwork:
+    driver: bridge
+
+
+
+#version: "3"
+#services:
+#  eureka-server:
+#    build: eureka-server/
+#    container_name: eureka-server
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8076:8076
+#  api-gateway:
+#    build: api-gateway/
+#    container_name: api-gateway
+#    depends_on:
+#      - eureka-server
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8086:8086
+#  product-webapp:
+#    build: product-webapp/
+#    image: product-webapp
+#    depends_on:
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    container_name: product-webapp
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - "8099:8099"
+#
+#  user-profile-service:
+#    build: user-profile-service/
+#    image: user-profile-service
+#    depends_on:
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    container_name: user-profile-service
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8081:8081
+#  giftcard-service:
+#    build: giftcard-service/
+#    image: giftcard-service
+#    depends_on:
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    container_name: giftcard-service
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8083:8083
+#  payment-service:
+#    build: payment-service/
+#    image: payment-service
+#    depends_on:
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    container_name: payment-service
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:

@@ -1,0 +1,137 @@
+
+
+.coupan_card {
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px 10px;
+ 
+}
+
+.main
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+
+}
+.coupan_card_content {
+    border-top: 1px solid var(--c-border-primary);
+    margin-top: 2rem;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.copy-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+}
+.coupan_card::after {
+  position: absolute;
+  content: "";
+  height: 40px;
+  right: -20px;
+  border-radius: 40px;
+  z-index: 1;
+  top: 70px;
+  background-color: #ffffff;
+  width: 40px;
+}
+
+.coupan_card::before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  left: -20px;
+  border-radius: 40px;
+  z-index: 1;
+  top: 70px;
+  background-color: #ffffff;
+  width: 40px;
+}
+
+.co-img img {
+  width: 80px;
+  
+}
+.vertical {
+  border-left: 5px dotted black;
+  height: 100px;
+  position: absolute;
+  left: 40%;
+}
+
+.coupan_card_content h1 {
+  font-size: 35px;
+  margin-left: -20px;
+  color: #181818;
+}
+
+.coupan_card_content h1 span {
+  font-size: 18px;
+}
+.coupan_card_content h2 {
+  font-size: 18px;
+  margin-left: -20px;
+  color: #565656;
+  text-transform: uppercase;
+}
+
+.coupan_card_content p {
+  font-size: 16px;
+  color: #696969;
+  margin-left: -20px;
+}
+
+.copy-button {
+  margin: 12px 0 -5px 0;
+  height: 45px;
+  border-radius: 4px;
+  padding: 0 5px;
+  border: 1px solid #e1e1e1;
+}
+
+.copy-button input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.copy-button button {
+  padding: 5px 20px;
+  background-color: #dc143c;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+.buy{
+ position: absolute;
+  content: "";
+  bottom: 20px;
+  left:20px;
+  background-color: #dc143c;
+ }
+
+
+ .coupan-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	column-gap: 2rem;
+	row-gap: 3rem;
+}
+@media (min-width: 700px) {
+	.coupan-grid {
+		grid-template-columns: repeat(2, 1fr);
+   }
+}
+@media (min-width: 1200px) {
+	.coupan-grid {
+		grid-template-columns: repeat(3, 1fr);
+   }
+}

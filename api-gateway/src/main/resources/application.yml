@@ -1,0 +1,56 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8076/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - AuthenticationFilter
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: user
+          uri: http://user:8081
+          predicates:
+            - Path=/user/**
+
+
+        - id: giftcard
+          uri: http://giftcard:8083
+          predicates:
+            - Path=/gift/**
+
+        - id: payment
+          uri: http://payment:8082
+          predicates:
+            - Path=/payment/**
+
+        - id: product-webapp
+          uri: http://product-webapp:3001
+          predicates:
+            - Path=/**
+
+#  lb://giftcard
+jwt:
+  secret: Aw3kYKXSjOpt44Gdit3JttQCzQgCfa5R1yzOBrFWsLZkZM-PYDQBHXaFlmcNHiJ129gOi8dftELhI
+  validity: 200
+  authDisabled: false
+

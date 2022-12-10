@@ -1,0 +1,14 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8076/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+server:
+  port: 3001
+
+spring:
+  application:
+    name: "product-webapp"
+

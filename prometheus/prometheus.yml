@@ -1,0 +1,42 @@
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['gateway:8086']
+        labels:
+          application: 'Api Gateway Application'
+  - job_name: 'eureka_server'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['eureka-server:8076']
+        labels:
+          application: 'Eureka Server Application'
+  - job_name: 'user'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['user:8081']
+        labels:
+          application: 'User Profile Service Application'
+  - job_name: 'giftcard'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['giftcard:8083']
+        labels:
+          application: 'Giftcard Service Application'
+  - job_name: 'payment'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'payment:8082' ]
+        labels:
+          application: 'Payment Service Application'
+
+#  - job_name: 'product_webapp'
+#    metrics_path: '/actuator/prometheus'
+#    static_configs:
+#      - targets: [ 'product-webapp:3000' ]
+#        labels:
+#          application: 'Product Webapp Application'
