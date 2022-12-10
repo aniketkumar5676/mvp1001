@@ -43,10 +43,6 @@ spring:
           predicates:
             - Path=/payment/**
 
-        - id: product-webapp
-          uri: http://product-webapp:3001
-          predicates:
-            - Path=/**
 
 #  lb://giftcard
 jwt:

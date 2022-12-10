@@ -13,8 +13,8 @@ public class RouterValidator {
            "/login",
            "/user/addUser",
            "/eureka",
-           "/api-docs",
-           "/"
+           "/api-docs"
+        //   "/"
     );
     public Predicate<ServerHttpRequest> isSecured =
             request -> openApiEndpoints
