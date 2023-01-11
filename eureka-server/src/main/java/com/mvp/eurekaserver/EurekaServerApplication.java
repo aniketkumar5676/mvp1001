@@ -1,4 +1,4 @@
-package com.stackroute.eurekaserver;
+package com.mvp.eurekaserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

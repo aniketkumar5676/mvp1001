@@ -1,4 +1,4 @@
-package com.stackroute.apigateway.models;
+package com.mvp.apigateway.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,8 +14,5 @@ public class AuthenticationStatus {
     private String message;
     private String userId;
     private String username;
-    private String emailId;
-    private String contact_no;
     private String role;
-
 }

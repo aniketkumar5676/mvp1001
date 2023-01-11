@@ -1,4 +1,4 @@
-package com.stackroute.apigateway.models;
+package com.mvp.apigateway.models;
 
 import java.io.Serializable;
 
@@ -20,4 +20,5 @@ public class JwtRequest implements Serializable {
 	private String userId;
 	@NotBlank(message = "Wrong Format") @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
 	private String password;
+	private	String loginType;
 }

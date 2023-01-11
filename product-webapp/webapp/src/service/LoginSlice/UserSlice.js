@@ -40,9 +40,10 @@ export const STATUES= Object.freeze({
       .addCase(login.fulfilled,(state,action)=>{
         state.status=STATUES.IDLE
         if(action.payload=="")
-        {
+        {          
           state.authorised=false
         }else{
+          console.log("called")
           state.authorised=true
         }
         state.activeUser=action.payload
@@ -75,10 +76,9 @@ export const {logoutUser} = UserSlice.actions;
 
 export default UserSlice.reducer;
 
-export const login = createAsyncThunk('/login', async (user,thunkAPI) => {
+export const login = createAsyncThunk('api/login', async (user,thunkAPI) => {
     try {
-      
-        const response = await fetch(URL.SET+'/login',
+        const response = await fetch(URL.SET+'api/login',
         {
           method: 'POST',
           statusCode: 200,
@@ -110,10 +110,11 @@ export const login = createAsyncThunk('/login', async (user,thunkAPI) => {
 
 
 
+
   export const register = createAsyncThunk('/register', async (user,thunkAPI) => {
 
     try {
-        const response = await fetch(URL.SET+'/user/addUser',
+        const response = await fetch(URL.SET+'job/addUser',
         {
           method: 'POST',
           statusCode: 200,
@@ -131,8 +132,8 @@ export const login = createAsyncThunk('/login', async (user,thunkAPI) => {
 
 
         if(response.ok)
-        { toast.success(message)
-        
+        { 
+          toast.success(message)
         }
         if(!response.ok){
           toast.info(message)

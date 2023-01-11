@@ -1,4 +1,4 @@
-package com.stackroute.productwebapp;
+package com.mvp.productwebapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -7,7 +7,7 @@ export default function Loading() {
     <div className="center_anim">  
         <img style={{width:"150px"}} src={loading_anim}></img>
         <br></br>
-        <h5>Checking Coupan Availability</h5>
+        <h5>Finding Jobs For You</h5>
     </div>
   )
 }

@@ -1,15 +1,15 @@
-package com.stackroute.apigateway.controller;
+package com.mvp.apigateway.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.stackroute.apigateway.ExceptionHandler.NotFound;
-import com.stackroute.apigateway.models.AuthenticationStatus;
-import com.stackroute.apigateway.models.ErrorResponseDto;
-import com.stackroute.apigateway.models.JwtRequest;
-import com.stackroute.apigateway.security.JwtTokenUtil;
-import com.stackroute.apigateway.service.LoginService;
+import com.mvp.apigateway.ExceptionHandler.NotFound;
+import com.mvp.apigateway.models.AuthenticationStatus;
+import com.mvp.apigateway.security.JwtTokenUtil;
+import com.mvp.apigateway.models.ErrorResponseDto;
+import com.mvp.apigateway.models.JwtRequest;
+import com.mvp.apigateway.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 
 @RestController
+@RequestMapping("api")
 @CrossOrigin(origins = "*")
 public class JwtAuthenticationController {
 
@@ -31,10 +32,9 @@ public class JwtAuthenticationController {
 		this.jwtTokenUtil = jwtTokenUtil;
 	}
 
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody @Valid JwtRequest authenticationRequest) throws NotFound {
-		AuthenticationStatus status = loginService.authenticate(authenticationRequest.getUserId(), authenticationRequest.getPassword());
+		@PostMapping("/login")
+		public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws NotFound {
+		AuthenticationStatus status = loginService.authenticate(authenticationRequest.getUserId(), authenticationRequest.getPassword(),authenticationRequest.getLoginType());
 
 		if (!status.getIsAuthenticated()) {
 			List<String> details = new ArrayList<>();

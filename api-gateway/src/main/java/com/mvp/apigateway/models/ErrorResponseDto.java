@@ -1,4 +1,4 @@
-package com.stackroute.apigateway.models;
+package com.mvp.apigateway.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

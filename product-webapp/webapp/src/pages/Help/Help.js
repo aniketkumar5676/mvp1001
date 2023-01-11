@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../../components/Footer';
 import emailjs from 'emailjs-com';
 import './style.css';
 import { toast } from 'react-toastify';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Help() {
 
@@ -30,6 +30,7 @@ export default function Help() {
   
   return (
     <>
+    <Navbar></Navbar>
     <div className="helpcontainer">
       
       <div className="helpinfo">
@@ -52,15 +53,13 @@ export default function Help() {
             <h2 className="accordion-header" id="headingOneY">
               <button className="accordion-button" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#collapseOneY" aria-expanded="true" aria-controls="collapseOneY">
-                <i className="fas fa-paper-plane text-dark pe-2"></i><b>What can I purchase using my Gift Card?</b>
+                <i className="fas fa-paper-plane text-dark pe-2"></i><b>Est veniam consequat cupidatat minim?</b>
               </button>
             </h2>
             <div id="collapseOneY" className="accordion-collapse collapse show" aria-labelledby="headingOneY"
               data-mdb-parent="#accordionExampleY">
               <div className="accordion-body">
-                <strong>Absolutely Anything!!!</strong> Using your Gift Voucher, you can purchase that’s available on its online store or mobile application. 
-                This includes foodgrains, beverages, fruits & vegetables, gourmet & world food. 
-                There are no restrictions on what you can purchase from this online retailer.
+                <strong>Absolutely Anything!!!</strong> Duis pariatur consectetur qui incididunt esse officia sint pariatur exercitation. Culpa id eiusmod aute voluptate. Occaecat magna dolor id reprehenderit consectetur incididunt incididunt anim proident et veniam laboris tempor. Enim dolore ea amet mollit sint Lorem velit incididunt sunt est aliquip consequat. Aliquip Lorem id proident sunt mollit mollit sunt duis labore aute. Est veniam consequat cupidatat minim. Velit qui officia eu id excepteur proident sit et est.
               </div>
             </div>
           </div>
@@ -69,13 +68,13 @@ export default function Help() {
             <h2 className="accordion-header" id="headingTwoY">
               <button className="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#collapseTwoY" aria-expanded="false" aria-controls="collapseTwoY">
-                <i className="fas fa-pen-alt text-dark pe-2"></i><b>I have multiple Vouchers with me. Can I use them during a single transaction?</b>
+                <i className="fas fa-pen-alt text-dark pe-2"></i><b>Velit qui officia eu id excepteur proident sit et est?</b>
               </button>
             </h2>
             <div id="collapseTwoY" className="accordion-collapse collapse" aria-labelledby="headingTwoY"
               data-mdb-parent="#accordionExampleY">
               <div className="accordion-body">
-                <strong>Ofcourse...!</strong> Yes, you can use all your GiftCard Vouchers during a single transaction without any issue.
+                <strong>Ofcourse...!</strong> Duis pariatur consectetur qui incididunt esse officia sint pariatur exercitation. Culpa id eiusmod aute voluptate. Occaecat magna dolor id reprehenderit consectetur incididunt incididunt anim proident et veniam laboris tempor. Enim dolore ea amet mollit sint Lorem velit incididunt sunt est aliquip consequat. Aliquip Lorem id proident sunt mollit mollit sunt duis labore aute. Est veniam consequat cupidatat minim. Velit qui officia eu id excepteur proident sit et est.
               </div>
             </div>
           </div>
@@ -84,14 +83,13 @@ export default function Help() {
             <h2 className="accordion-header" id="headingThreeY">
               <button className="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#collapseThreeY" aria-expanded="false" aria-controls="collapseThreeY">
-                <i className="fas fa-user text-dark pe-2"></i><b>What is the validity of any e-Voucher Gift Voucher available?</b> 
+                <i className="fas fa-user text-dark pe-2"></i><b>Lorem velit incididunt sunt est aliquip consequat?</b> 
               </button>
             </h2>
             <div id="collapseThreeY" className="accordion-collapse collapse" aria-labelledby="headingThreeY"
               data-mdb-parent="#accordionExampleY">
               <div className="accordion-body">
-                <strong>Minimum 3 Months....</strong> The validity of any e-Voucher being sold is between 3 to 12 months. 
-                You will get these details via email and SMS with your Voucher code.
+                <strong>Minimum 3 Months....</strong> Duis pariatur consectetur qui incididunt esse officia sint pariatur exercitation. Culpa id eiusmod aute voluptate. Occaecat magna dolor id reprehenderit consectetur incididunt incididunt anim proident et veniam laboris tempor. Enim dolore ea amet mollit sint Lorem velit incididunt sunt est aliquip consequat. Aliquip Lorem id proident sunt mollit mollit sunt duis labore aute. Est veniam consequat cupidatat minim. Velit qui officia eu id excepteur proident sit et est.
               </div>
             </div>
           </div>
@@ -100,18 +98,13 @@ export default function Help() {
             <h2 className="accordion-header" id="headingFourY">
               <button className="accordion-button" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#collapseFourY" aria-expanded="true" aria-controls="collapseFourY">
-                <i className="fas fa-rocket text-dark pe-2"></i><b>How do I send e-Gift Voucher to someone directly?</b>
+                <i className="fas fa-rocket text-dark pe-2"></i><b> Lorem id proident sunt mollit mollit sunt?</b>
               </button>
             </h2>
             <div id="collapseFourY" className="accordion-collapse collapse " aria-labelledby="headingFourY"
               data-mdb-parent="#accordionExampleY">
               <div className="accordion-body">
-                <strong>These steps let you send e-Gift Voucher directly to your nears, dears, and acquaintances: </strong><br></br><br></br>
-                1. Select the Voucher value & quantity you want to send them.<br></br>
-                2. Check the box saying “I am Gyfting.”<br></br>
-                3. Choose your message, occasion and mention the contact details of the recipient.<br></br>
-                4. Make the payment through available methods.<br></br><br></br>
-                They will receive the Voucher in their SMS/Email inbox in a few minutes.
+                <strong>Duis pariatur consectetur qui incididunt esse officia sint pariatur exercitation. Culpa id eiusmod aute voluptate. Occaecat magna dolor id reprehenderit consectetur incididunt incididunt anim proident et veniam laboris tempor. Enim dolore ea amet mollit sint Lorem velit incididunt sunt est aliquip consequat. Aliquip Lorem id proident sunt mollit mollit sunt duis labore aute. Est veniam consequat cupidatat minim. Velit qui officia eu id excepteur proident sit et est.</strong>
               </div>
             </div>
           </div>
@@ -120,7 +113,7 @@ export default function Help() {
             <h2 className="accordion-header" id="headingFiveY">
               <button className="accordion-button" type="button" data-mdb-toggle="collapse"
                 data-mdb-target="#collapseFiveY" aria-expanded="true" aria-controls="collapseFiveY">
-                <i className="fas fa-home text-dark pe-2"></i><b>I have lost my Gift Card. Can I get the duplicate Voucher code?</b>
+                <i className="fas fa-home text-dark pe-2"></i><b>Lorem velit incididunt sunt est aliquip consequat?</b>
               </button>
             </h2>
             <div id="collapseFiveY" className="accordion-collapse collapse " aria-labelledby="headingFiveY"
@@ -172,7 +165,6 @@ export default function Help() {
        
     </div>
 
-    <Footer/>
-    </>
+     </>
   )
 }

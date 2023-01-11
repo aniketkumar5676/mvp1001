@@ -1,4 +1,4 @@
-package com.stackroute.apigateway.exception;
+package com.mvp.apigateway.exception;
 
 import javax.naming.AuthenticationException;
 

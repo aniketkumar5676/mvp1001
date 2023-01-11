@@ -26,7 +26,7 @@ public class RegisterService {
 
         // for User or Normal JobSeeker
 
-        if(registerDto.getRole().equals("jobseeker")){
+        if(registerDto.getRole().equals("User")){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String passwordEncoded = passwordEncoder.encode(registerDto.getPassword());
         registerDto.setPassword(passwordEncoded);
@@ -41,7 +41,7 @@ public class RegisterService {
 
         }
 
-        if(registerDto.getRole().equals("employee")){
+        if(registerDto.getRole().equals("Employee")){
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String passwordEncoded = passwordEncoder.encode(registerDto.getPassword());
             registerDto.setPassword(passwordEncoded);
@@ -57,7 +57,7 @@ public class RegisterService {
         }
 
 
-        if(registerDto.getRole().equals("institute")){
+        if(registerDto.getRole().equals("Institute")){
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String passwordEncoded = passwordEncoder.encode(registerDto.getPassword());
             registerDto.setPassword(passwordEncoded);

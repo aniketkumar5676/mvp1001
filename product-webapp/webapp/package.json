@@ -11,9 +11,11 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.2.2",
+    "axios": "^1.2.2",
     "bootstrap-icons": "^1.10.2",
+    "bulma": "^0.9.4",
     "emailjs-com": "^3.2.0",
+    "file-saver": "^2.0.5",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.25",
     "jwt-decode": "^3.1.2",
@@ -58,5 +60,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@webpixels/css": "^1.2.4",
+    "bootstrap": "^5.2.3"
   }
 }

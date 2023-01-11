@@ -1,4 +1,4 @@
-package com.stackroute.productwebapp.controller;
+package com.mvp.productwebapp.controller;
 
 import org.apache.maven.model.Model;
 import org.springframework.stereotype.Controller;

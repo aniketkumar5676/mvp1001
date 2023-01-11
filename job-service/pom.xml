@@ -9,9 +9,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>com.mvp</groupId>
-	<artifactId>user-profile-service</artifactId>
+	<artifactId>job-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user-profile-service</name>
+	<name>job-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

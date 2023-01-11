@@ -27,20 +27,11 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
-        - id: user
-          uri: http://user:8081
+        - id: job
+          uri: http://job:8081
           predicates:
-            - Path=/user/**
+            - Path=/job/**
 
-        - id: giftcard
-          uri: http://giftcard:8083
-          predicates:
-            - Path=/gift/**
-
-        - id: payment
-          uri: http://payment:8082
-          predicates:
-            - Path=/payment/**
 
 #  lb://giftcard
 jwt:

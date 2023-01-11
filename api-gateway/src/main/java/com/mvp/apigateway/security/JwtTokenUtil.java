@@ -1,17 +1,15 @@
-package com.stackroute.apigateway.security;
+package com.mvp.apigateway.security;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
 
 
-import com.stackroute.apigateway.config.JwtConfig;
-import com.stackroute.apigateway.exception.JwtTokenIncorrectStructureException;
-import com.stackroute.apigateway.exception.JwtTokenMalformedException;
-import com.stackroute.apigateway.exception.JwtTokenMissingException;
-import com.stackroute.apigateway.models.AuthenticationStatus;
-import io.jsonwebtoken.Claims;
+import com.mvp.apigateway.config.JwtConfig;
+import com.mvp.apigateway.exception.JwtTokenIncorrectStructureException;
+import com.mvp.apigateway.exception.JwtTokenMalformedException;
+import com.mvp.apigateway.exception.JwtTokenMissingException;
+import com.mvp.apigateway.models.AuthenticationStatus;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;

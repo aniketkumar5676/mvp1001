@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.stackroute</groupId>
+		<groupId>com.mvp</groupId>
 		<artifactId>product-boilerplate</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 		<!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.stackroute</groupId>
+	<groupId>com.mvp</groupId>
 	<artifactId>api-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>API Gateway</name>

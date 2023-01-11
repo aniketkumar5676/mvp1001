@@ -1,4 +1,4 @@
-package com.stackroute.apigateway.security;
+package com.mvp.apigateway.security;
 
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
@@ -10,8 +10,8 @@ import java.util.function.Predicate;
 public class RouterValidator {
 
     public static final List<String> openApiEndpoints = List.of(
-           "/login",
-           "/user/addUser",
+           "/api/login",
+           "/job/addUser",
            "/eureka",
            "/api-docs"
         //   "/"

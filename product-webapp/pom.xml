@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.stackroute</groupId>
+		<groupId>com.mvp</groupId>
 		<artifactId>product-boilerplate</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 		<!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.stackroute</groupId>
+	<groupId>com.mvp</groupId>
 	<artifactId>product-webapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Product Webapp</name>

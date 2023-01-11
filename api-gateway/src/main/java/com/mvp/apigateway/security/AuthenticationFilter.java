@@ -1,9 +1,9 @@
-package com.stackroute.apigateway.security;
+package com.mvp.apigateway.security;
 
 
-import com.stackroute.apigateway.ExceptionHandler.NotFound;
-import com.stackroute.apigateway.config.JwtConfig;
-import com.stackroute.apigateway.models.ErrorResponseDto;
+import com.mvp.apigateway.ExceptionHandler.NotFound;
+import com.mvp.apigateway.config.JwtConfig;
+import com.mvp.apigateway.models.ErrorResponseDto;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -61,12 +61,13 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 					JSONObject payload = new JSONObject(decode(token[1]));
                     String role = payload.getString("role");
 
-					if (role.equals("user")){
+					/*if (role.equals("user")){
 						if (!routerValidator.isMerchant.test(exchange.getRequest())){
                                 throw new NotFound("You are not Authorised");
 						}
 
-					}
+					}*/
+
 				}
 				catch (Exception ex) {
 					log.error("Error Validating Authentication Header", ex);

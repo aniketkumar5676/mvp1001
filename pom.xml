@@ -8,7 +8,7 @@
         <version>2.7.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.stackroute</groupId>
+    <groupId>com.mvp</groupId>
     <artifactId>product-boilerplate</artifactId>
     <version>1.0.0</version>
     <name>Product Boilerplate</name>
@@ -26,10 +26,7 @@
         <module>eureka-server</module>
         <module>api-gateway</module>
         <module>product-webapp</module>
-        <module>aggregator</module>
-        <module>giftcard-service</module>
-        <module>user-profile-service</module>
-        <module>payment-service</module>
+        <module>job-service</module>
     </modules>
 
     <dependencies>

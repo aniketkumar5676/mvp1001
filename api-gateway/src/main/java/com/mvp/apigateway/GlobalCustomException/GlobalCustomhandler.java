@@ -1,6 +1,6 @@
-package com.stackroute.apigateway.GlobalCustomException;
+package com.mvp.apigateway.GlobalCustomException;
 
-import com.stackroute.apigateway.ExceptionHandler.NotFound;
+import com.mvp.apigateway.ExceptionHandler.NotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

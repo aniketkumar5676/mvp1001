@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from '../service/LoginSlice/UserSlice'
-import giftCardReducer from '../service/GiftCardSlice/GiftCardSlice'
+import JobReducer from '../service/JobSlice/JobSlice'
 
 const store =configureStore({
     reducer:{
         user:userReducer,
-        giftcard:giftCardReducer
+        Job:JobReducer
     }
 })
 

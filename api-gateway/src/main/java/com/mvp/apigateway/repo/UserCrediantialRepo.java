@@ -1,6 +1,6 @@
-package com.stackroute.apigateway.repo;
+package com.mvp.apigateway.repo;
 
-import com.stackroute.apigateway.models.UserCredentials;
+import com.mvp.apigateway.models.UserCredentials;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserCrediantialRepo extends JpaRepository<UserCredentials,String> {

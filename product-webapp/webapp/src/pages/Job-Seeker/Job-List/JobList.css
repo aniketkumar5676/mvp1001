@@ -1,0 +1,29 @@
+
+.card-grid-job {
+    grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 800px) {
+.card-bg{
+    background-image: url('./images/list_bg.png') !important; 
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    object-fit: fill !important;
+    border-radius: 20px  !important;    
+
+}
+}
+
+@media (min-width: 300px) {
+    .card-bg{
+        
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        object-fit: fill !important;
+        border-radius: 20px  !important;    
+    }
+    
+}
+
