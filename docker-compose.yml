@@ -91,9 +91,8 @@ services:
     depends_on:
       - eureka-server
       - gateway
-      - user
-      - giftcard
-      - payment
+      - job
+
 
   grafana:
       image: grafana/grafana:latest
