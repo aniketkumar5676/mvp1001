@@ -36,7 +36,8 @@ public class RegisterService {
             throw new NotFound("User Already Exists");
         }
         userCrediantialRepo.save(UserCredentials.build(registerDto.getUserId(),registerDto.getUsername(),registerDto.getPassword()
-        ,registerDto.getEmailId(),registerDto.getContact_no(),registerDto.getAddress(),registerDto.getRole()));
+        ,registerDto.getEmailId(), registerDto.getAlternativeEmailId(),
+                registerDto.getContact_no(), registerDto.getAlternativeContactNo(), registerDto.getAddress(),registerDto.getRole()));
         return "User Successfully Registered to Us";
 
         }
@@ -51,7 +52,8 @@ public class RegisterService {
                 throw new NotFound("Employeer Already Exists");
             }
             employerRepo.save(EmployeerInformation.build(registerDto.getUserId(),registerDto.getUsername(),registerDto.getPassword()
-                    ,registerDto.getEmailId(),registerDto.getContact_no(),registerDto.getAddress(),registerDto.getRole()));
+                    ,registerDto.getEmailId(), registerDto.getAlternativeEmailId(), registerDto.getContact_no(),
+                    registerDto.getAlternativeContactNo(),registerDto.getAddress(),registerDto.getRole()));
             return "Employee Successfully Registered to Us";
 
         }

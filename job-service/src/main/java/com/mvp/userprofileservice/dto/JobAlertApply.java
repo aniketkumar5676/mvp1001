@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobApply {
+public class JobAlertApply {
     String jobId;
     String userId;
+    String jobTitle;
 }

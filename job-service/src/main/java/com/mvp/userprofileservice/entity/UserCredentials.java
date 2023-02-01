@@ -32,8 +32,10 @@ public class UserCredentials {
     String password;
     @NotBlank(message = "Wrong Format") @Email
     String emailId;
+    String alternativeEmailId;
     @NotBlank(message = "Wrong Format")  @Pattern(regexp = "[0-9]+")
     String contact_no;
+    String alternativeContactNo;
     String address;
     String role;
 }

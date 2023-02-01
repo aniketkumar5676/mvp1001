@@ -1,11 +1,13 @@
 
-import React from 'react'
+import React,{useState} from 'react'
 import { useEffect } from 'react'
 import Login from './login/Login'
 import './Welcome.css'
 import { useSelector } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import ForgetPassword from '../ForgetPassword/ForgetPassword';
+import { FadeIn } from 'react-slide-fade-in';
 
 
 
@@ -14,6 +16,7 @@ export default function Welcome() {
   const {activeUser,status,authorised} = useSelector((state)=>state.user)
   const navigate = useNavigate();
 
+  const [normalLogin,setNormalLogin]=useState(true)
 
   useEffect(() => {
   
@@ -37,11 +40,12 @@ export default function Welcome() {
     if (decode.role=="Institute"){
       navigate('/institute')
     }
-   
-    
+       
   }
 
-
+const change = () =>{
+  setNormalLogin(!normalLogin)
+}
 
  return (
 
@@ -70,7 +74,24 @@ export default function Welcome() {
           <h2 className="ls-tight font-lighter display-6 mb-5">
             To Find The Right Job.
           </h2>
-          <Login/>
+
+          {normalLogin?
+          <>
+                      <FadeIn
+      from="right"
+      positionOffset={200}
+      triggerOffset={100}
+      delayInMilliseconds={50}
+    >
+            
+          <Login change={change} />
+          </FadeIn>          </>:<>
+
+           <ForgetPassword change={change}></ForgetPassword>
+                    
+
+          </>}
+          
         </div>
 
       </div>

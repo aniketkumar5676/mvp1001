@@ -19,7 +19,10 @@ public class RegisterDto {
     String username;
     String password;
     String emailId;
+    String alternativeEmailId;
     String contact_no;
+    String alternativeContactNo;
     String address;
     String role;
+
 }

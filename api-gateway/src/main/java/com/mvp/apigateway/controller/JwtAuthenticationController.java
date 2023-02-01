@@ -5,10 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.mvp.apigateway.ExceptionHandler.NotFound;
-import com.mvp.apigateway.models.AuthenticationStatus;
+import com.mvp.apigateway.models.*;
 import com.mvp.apigateway.security.JwtTokenUtil;
-import com.mvp.apigateway.models.ErrorResponseDto;
-import com.mvp.apigateway.models.JwtRequest;
 import com.mvp.apigateway.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +29,6 @@ public class JwtAuthenticationController {
 	public JwtAuthenticationController(JwtTokenUtil jwtTokenUtil) {
 		this.jwtTokenUtil = jwtTokenUtil;
 	}
-
 		@PostMapping("/login")
 		public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws NotFound {
 		AuthenticationStatus status = loginService.authenticate(authenticationRequest.getUserId(), authenticationRequest.getPassword(),authenticationRequest.getLoginType());
@@ -47,5 +44,15 @@ public class JwtAuthenticationController {
 		return ResponseEntity.ok(token);
 	}
 
+
+	@PostMapping("/checkUser")
+    public String checkUser(@RequestBody CheckUser user) throws NotFound {
+		return loginService.checkUser(user);
+	}
+
+	@PostMapping("/updatePass")
+	public String updatePass(@RequestBody UpdatePass updatePass) throws NotFound {
+		return loginService.updatePass(updatePass);
+	}
 
 }

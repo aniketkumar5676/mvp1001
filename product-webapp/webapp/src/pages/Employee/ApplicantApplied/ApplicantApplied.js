@@ -3,8 +3,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { saveAs } from 'file-saver';
 import {URL} from '../../../store/Const'
+import { toast } from 'react-toastify';
 
-export default function ApplicantApplied({jobId}) {
+export default function ApplicantApplied({jobId,jobData}) {
 
 
 const [subscribedJob,setSubscribedjob]=useState([])
@@ -14,6 +15,7 @@ const[resume,setResume] =useState()
     useEffect(()=>{
 
         async function fetchData() {
+
             const response = await fetch(URL.SET+`job/subscribedjobs/${jobId}`,
                 {
                     method: 'GET',
@@ -73,20 +75,50 @@ const requestOptions = {
 }
 
 
-  return (
+async function hireCandidate(userId){
+
+  
+            const response = await fetch(URL.SET+`job/hire`,
+                {
+                    method: 'POST',
+                    statusCode: 200,
+                    headers: {
+                        "origin": "*",
+                        'Content-Type':'application/json',
+                        "optionsSuccessStatus": 200,
+                        'Authorization': localStorage.getItem('auth0')
+                    },
+
+                    body:JSON.stringify({jobId,userId,'jobTitle':jobData.jobtitle})
+                })
+
+                if (response.ok) {
+                    toast.success("Successfully Hired this Candidate!, Candidate will get notified soon")
+                }
+    
+                    if (!response.ok) {
+                        toast.info("Already Hired this candidate")
+                    }
+    
+}
+
+
+return (
 
     <> 
+    <h5 className='mb-4'> No of Applicant Applied : <b style={{color:'Green'}}>{subscribedJob.length}</b></h5>
    { subscribedJob.length == 0 ? <h5 className='text-center mt-5'> No Subcriptions Yet </h5>:  <div className="table-responsive">
   <table className="table table-hover table-nowrap">
     <thead className="table-light">
       <tr>
-        <th scope="col">Name</th>
+        <th scope="col">Applicant Id</th>
         <th scope="col">Resume</th>
+        <th scope="col">Hire</th>
       </tr>
     </thead>
 
     <tbody>
-                     {subscribedJob.map((data, id) => {
+         {subscribedJob.map((data, id) => {
                  return(
                     <tr key={id}>
                     <td data-label="Job Title">
@@ -98,10 +130,15 @@ const requestOptions = {
                     <td data-label="Resume">
                         <h3 style={{cursor:'pointer'}} onClick={()=>resumeDL(data.userId)}><i className="bi bi-file-earmark-arrow-down-fill"></i></h3>
                     </td>
+
+                    <td >
+                        <button style={{cursor:'pointer',marginLeft:'-15px'}} className='button is-warning ' onClick={()=>hireCandidate(data.userId)}>Hire Him</button>
+                    </td>
+
                 </tr>
                  )
-                  
-                  })}
+                 
+          })}
       </tbody>
   </table>
  

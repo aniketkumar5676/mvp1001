@@ -18,7 +18,9 @@ public class EmployeerInformation {
     String employeeName;
     String password;
     String emailId;
+    String alternativeEmailId;
     String contact_no;
+    String alternativeContactNo;
     String address;
     String role;
 }

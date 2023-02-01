@@ -3,18 +3,21 @@ import { useState, useEffect } from 'react'
 import ApplicantApplied from '../ApplicantApplied/ApplicantApplied'
 import { URL } from '../../../store/Const'
 import './JobList.css'
+import jwt_decode from "jwt-decode";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { showAlertConfirmarion } from "mui-react-alert";
+
 
 export default function JobList({ activeUserId, tabs }) {
 
     const [jobList, setJobList] = useState([])
     const [jobInfo, setjobInfo] = useState(true)
-
     const [currentJobId, setcurrentJobId] = useState('')
 
 
+
     useEffect(() => {
-
-
         async function fetchData() {
             const response = await fetch(URL.SET + `job/joblist/${activeUserId}`
                 ,
@@ -51,6 +54,43 @@ export default function JobList({ activeUserId, tabs }) {
         setjobInfo(true)
         tabs();
     }
+
+    const onConfirm = async (id) => {
+        const token = localStorage.getItem("auth0").replace('Bearer ', '');
+        var decode = jwt_decode(token);
+
+        const requestOptions = {
+            method: 'DELETE',
+            statusCode: 200,
+            headers: {
+                "origin": "*",
+                "optionsSuccessStatus": 200,
+                "Content-Type": "application/json",
+                'Authorization': localStorage.getItem('auth0')
+            },
+            body: JSON.stringify({ "userId": decode.sub, "jobId": id })
+        };
+
+        fetch(URL.SET + `job/delete/job`, requestOptions)
+            .then((res) => {
+
+                if (res.ok) {
+                    toast.success("Deleted Successful")
+                }
+                if (!res.ok) {
+                    toast.error('Something went Wrong')
+                }
+
+            })
+            .then((res) => {
+
+            }).catch((err) => {
+                return Promise.reject({ Error: 'Something Went Wrong', err });
+            })
+
+    }
+
+
     return (
         <>
             {jobInfo == true ? <>
@@ -60,9 +100,22 @@ export default function JobList({ activeUserId, tabs }) {
                             {jobList.map((data, index) => {
                                 return (
 
-                                    <div style={{
-                                        'background': "linear-gradient(149deg, rgba(23,182,79,0.15) 0%, rgba(0,146,255,0.15) 100%)"
-                                    }} className="card">
+                                    <div style={{ 'background': "linear-gradient(149deg, rgba(23,182,79,0.15) 0%, rgba(0,146,255,0.15) 100%)", position: 'relative' }}
+                                        className="card">
+                                        <button onClick={() => {
+                                            showAlertConfirmarion({
+                                                title: "Warning",
+                                                cancelLabel: "Cancel",
+                                                confirmLabel: "Delete",
+                                                subtitle:
+                                                    "Do you really want to delete this Job?",
+                                                onConfirmation: function () {
+                                                    onConfirm(data.id);
+                                                },
+                                            });
+                                        }}
+                                            className="x"> x </button>
+
                                         <div className="card-body">
                                             <h3 className="text-base font-semibold">Job Id: {data.id}</h3>
                                             <span className="d-block h3 mb-0"><i style={{ fontSize: '25px' }} className="bi bi-bookmark-check-fill"></i> {data.jobtitle}</span>
@@ -79,6 +132,7 @@ export default function JobList({ activeUserId, tabs }) {
                                             <button className="button is-primary is-light" onClick={() => showInfo(data.id)} type="button"  >
                                                 More Details...
                                             </button>
+
                                         </div>
                                     </div>
                                 )
@@ -99,7 +153,6 @@ export default function JobList({ activeUserId, tabs }) {
                             <h2 className=' ms-5' > Job Id:  {currentJobId}</h2>
                         </div>
                     </div>
-
                     {jobList.filter((data) => data.id == currentJobId).map((data, id) => {
                         return (
                             <>
@@ -145,9 +198,8 @@ export default function JobList({ activeUserId, tabs }) {
                                                 {data.description}
                                             </p>
 
-                                            <h2 style={{ fontSize: '20px' }} className="h4 mt-5"><b>Applicant Applied:</b></h2>
 
-                                            <ApplicantApplied jobId={currentJobId}></ApplicantApplied>
+                                            <ApplicantApplied jobId={currentJobId} jobData={data}></ApplicantApplied>
 
                                         </div>
                                     </div>

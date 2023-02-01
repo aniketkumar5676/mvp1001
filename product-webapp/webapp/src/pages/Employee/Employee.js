@@ -4,17 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import jwt_decode from "jwt-decode";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Navbar from '../../components/Navbar/Navbar'
 import './Employee.css'
-import {
-  MDBModal,
-  MDBModalDialog,
-  MDBModalContent,
-  MDBModalHeader,
-  MDBModalTitle,
-
-} from 'mdb-react-ui-kit'
 import JobForm from './Job-Form/JobForm';
 import JobList from './Job-List/JobList'
 import Footer from '../../components/Footer/Footer';
@@ -22,15 +13,12 @@ import Footer from '../../components/Footer/Footer';
 
 export default function Employee() {
 
-  const [scrollableModal, setScrollableModal] = useState(false);
   const [showInfo, setshowInfo] = useState(true)
   const [showMenu, setshowMenu] = useState(false)
   const [menuactive, setmenuactive] = useState("")
   const [infoactive, setinfoactive] = useState("active")
-
+  const [showForm, setshowForm] = useState(false)
   const[showTabs,setshowTabs] = useState(true)
-  
-  const navigate = useNavigate();
   const[activeUserId,setActiveUserId]=useState();
 
 
@@ -75,6 +63,14 @@ export default function Employee() {
   const tabs=()=>{
    setshowTabs(!showTabs)
   }
+
+  
+  const showFormGroup=()=>{
+    setshowTabs(!showTabs)
+    setshowInfo(!showInfo)
+    setshowForm(!showForm)
+   }
+   
   
   return (
     <div className='resBody'>
@@ -94,8 +90,8 @@ export default function Employee() {
                 </div>
 
                 <div className="horizontal-tabs">
-                  <a onClick={info} className={infoactive} >Add Job</a>
-                  <a onClick={menu} className={menuactive} >Published Jobs</a>
+                  <a  onClick={info} className={infoactive} >Add Job</a>
+                  <a  onClick={menu} className={menuactive} >Published Jobs</a>
                 </div></> :<div style={{marginTop:"-5%"}}></div>
         }
          
@@ -115,28 +111,10 @@ export default function Employee() {
             <div className="content-header-actions">
               <a></a>
             
-             <button className='button-37' onClick={() => setScrollableModal(!scrollableModal)}> <i className="bi bi-plus"></i> Add Job</button>
-             
-       <MDBModal show={scrollableModal} setShow={setScrollableModal} tabIndex='-1'>
-        <MDBModalDialog scrollable>
-          <MDBModalContent>
-            <MDBModalHeader className='bg-img'>
-              <MDBModalTitle style={{color:'#fff'}}>Add Job Description
-                <p style={{fontSize:'13px',fontWeight:'300'}}>Read all fields properly</p>
-              </MDBModalTitle>
-              <a 
-                className='btn-close'
-                color='none'
-                onClick={() => setScrollableModal(!scrollableModal)}
-              ></a>
-            </MDBModalHeader>
-           
-            <JobForm setScrollableModal={setScrollableModal} activeUserId={activeUserId}/>
+             <button className='button-37' onClick={() => showFormGroup()}> <i className="bi bi-plus"></i> Add Job</button>
+          
 
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal>
-            
+                   
             </div>
           </div>
             
@@ -145,6 +123,11 @@ export default function Employee() {
           {showMenu && 
           <>
               <JobList activeUserId={activeUserId} tabs={tabs}/>
+          </>
+          }
+
+        {showForm && 
+          <> <JobForm showFormGroup={showFormGroup} activeUserId={activeUserId}/>
           </>
           }
 

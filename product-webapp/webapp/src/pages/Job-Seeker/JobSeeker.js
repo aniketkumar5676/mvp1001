@@ -62,7 +62,7 @@ export default function JobSeeker() {
 
     const formData = new FormData();
     formData.append('file', file);
-
+    
 
 
     const config = {
@@ -73,11 +73,12 @@ export default function JobSeeker() {
     };
 
     axios.post(URL.SET + `job/resume/${activeUserId}`, formData, config)
+
       .then(res => {
+        setScrollableModal(false)
         if (res.ok) {
           toast.success(res.data)
           setSelectedFile([])
-
         }
         if (!res.ok) {
           toast.info(res.data)

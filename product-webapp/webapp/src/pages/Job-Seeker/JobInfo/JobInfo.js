@@ -53,7 +53,7 @@ export default function JobInfo({ back, selectedJob,activeUserId}) {
             </div>
 
 
-            <div className='ms-5'>
+            <div >
                 <div className="card">
                     <div style={{ position: 'relative' }} className="p-2">
                         <img style={{ height: '400px', 'objectFit': 'cover' }} alt="..." src="https://source.unsplash.com/random/900x700/?technology" className="card-img" />
@@ -78,9 +78,15 @@ export default function JobInfo({ back, selectedJob,activeUserId}) {
                             </ul>
                         </nav>
 
-                        <span className="text-heading">
+                        <span className="text-heading ">
                         <i className="bi bi-geo-alt"></i> Location: {selectedJob.city}
-                        </span>
+                        </span><br></br>
+                        <div style={{marginTop:'1%'}} className="text-heading ">
+                        <i className="bi bi-calendar-check"></i>  {selectedJob.date}
+                        </div>
+                        <div style={{marginTop:'1%'}} className="text-heading ">
+                        <i className="bi bi-person"></i> No of Seats:  {selectedJob.noofvacancy}
+                        </div>
 
                         <h2 style={{ fontSize: '20px' }} className="h4 mt-5"><b>Qualifications Required</b></h2>
 

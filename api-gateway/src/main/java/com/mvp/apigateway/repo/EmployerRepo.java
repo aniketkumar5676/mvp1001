@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployerRepo  extends JpaRepository<EmployeerInformation,String> {
     EmployeerInformation findByEmployerId(String username);
+
+    EmployeerInformation findByEmailId(String emailId);
 }

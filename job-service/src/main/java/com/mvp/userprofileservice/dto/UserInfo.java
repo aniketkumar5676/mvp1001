@@ -20,12 +20,10 @@ public class UserInfo {
     String username;
     @NotBlank(message = "Wrong Format") @Email
     String email_id;
+    String alternativeEmailId;
     @NotBlank(message = "Wrong Format")  @Pattern(regexp = "[0-9]+")
     String contact_no;
+    String alternativeContactNo;
     String address;
-    String city;
-    String country;
-    String zip;
-
 }
 

@@ -32,7 +32,6 @@ spring:
           predicates:
             - Path=/job/**
 
-
 #  lb://giftcard
 jwt:
   secret: Aw3kYKXSjOpt44Gdit3JttQCzQgCfa5R1yzOBrFWsLZkZM-PYDQBHXaFlmcNHiJ129gOi8dftELhI

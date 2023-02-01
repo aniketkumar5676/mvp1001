@@ -53,3 +53,13 @@
   
   .desc-data { grid-area: desc-data; }
   
+  .x {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background: rgb(255, 213, 213);
+    border-radius: 50px;
+    color: rgb(255, 12, 12);
+    top: -10px;
+    right: -10px;
+}

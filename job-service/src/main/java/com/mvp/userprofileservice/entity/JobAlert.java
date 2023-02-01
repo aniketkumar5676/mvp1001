@@ -10,17 +10,17 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class SubscribedJobs {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String jobId;
-    private String userId;
+@AllArgsConstructor
+public class JobAlert {
+    @Id @GeneratedValue
+    int id;
+    String jobId;
+    String userId;
+    String date;
+    String jobTitle;
+    String notified;
 
-    public SubscribedJobs(String jobId, String userId) {
-        this.jobId = jobId;
-        this.userId = userId;
-    }
+
 }
+

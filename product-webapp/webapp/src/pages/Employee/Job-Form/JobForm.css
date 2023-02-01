@@ -1,0 +1,11 @@
+.formcss{
+    height: 150%;
+    width: 100%;
+    border-radius:5px;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 10px;
+ }
+.required-field::after {
+    content: "*";
+    color: red;
+}

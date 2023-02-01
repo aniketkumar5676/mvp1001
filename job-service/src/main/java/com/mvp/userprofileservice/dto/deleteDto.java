@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobApply {
-    String jobId;
+public class deleteDto {
     String userId;
+    String jobId;
 }

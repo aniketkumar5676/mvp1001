@@ -27,12 +27,28 @@ export default function Registration({handleLoginRegisterClick,loginRegisterActi
   return (
     <div>
     <form onSubmit={RegisterIt} >
-        <select style={{ borderRadius: 20}} required className="form-select fselect" value={role} onChange={(e) => setrole(e.target.value)} >
+      {/*   <select style={{ borderRadius: 20}} required className="form-select fselect" value={role} onChange={(e) => setrole(e.target.value)} >
               <option hidden value="">Select Your Role</option>
               <option value="User">User</option>
               <option value="Employee">Employee</option>
               <option value="Institute">Institute</option>
-        </select>
+        </select> */}
+
+        <span className='me-3'> <b>Select Role: </b></span>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value='User' onChange={(e) => setrole(e.target.value)} required/>
+              <label className="form-check-label" for="inlineRadio1">User</label>
+            </div>
+
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value='Employee' onChange={(e) => setrole(e.target.value)} />
+              <label className="form-check-label" for="inlineRadio2">Employee</label>
+            </div>
+
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value='Institute' onChange={(e) => setrole(e.target.value)} disabled />
+              <label className="form-check-label" for="inlineRadio3">Institute</label>
+            </div>
 
             <div className="mb-1">
               <label className="form-label" for="formInputExample3"></label>
